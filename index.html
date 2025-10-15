@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Portfolio of Rushikesh S. Deshmukh - Creative Developer & Designer specializing in full-stack web development">
+    <meta name="theme-color" content="#8b5cf6">
+    <title>Rushikesh.S.Deshmukh - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="custom-cursor"></div>
+    <div class="gradient-bg"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-20">
+        <nav class="container mx-auto px-6 py-3 glass-effect rounded-full mt-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-bold" style="color: var(--header-text);">Rushikesh.S.Deshmukh</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors" style="color: var(--text-color);">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition-colors" style="color: var(--text-color);">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition-colors" style="color: var(--text-color);">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors" style="color: var(--text-color);">Contact</a>
+                </div>
+                
+                <!-- Mobile & Desktop Buttons -->
+                <div class="flex items-center space-x-4">
+                    <a href="#contact" class="hidden sm:block bg-white text-gray-900 px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm">Get In Touch</a>
+                    <button id="theme-toggle" class="theme-toggle-button p-2 rounded-full focus:outline-none" style="color: var(--text-color);">
+                        <svg class="sun-icon h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg class="moon-icon h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                    <!-- Hamburger Menu -->
+                    <div class="hamburger md:hidden" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu md:hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="#about" class="mobile-menu-link transition-colors" style="color: var(--text-color);">About</a>
+                    <a href="#skills" class="mobile-menu-link transition-colors" style="color: var(--text-color);">Skills</a>
+                    <a href="#projects" class="mobile-menu-link transition-colors" style="color: var(--text-color);">Projects</a>
+                    <a href="#contact" class="mobile-menu-link transition-colors" style="color: var(--text-color);">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="relative h-screen flex items-center justify-center text-center overflow-hidden px-4">
+        <div id="scene-container"></div>
+        <div class="relative z-10 px-4 w-full max-w-4xl">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight hero-title mb-4" style="color: var(--text-color);">
+                <span id="typing-text" class="typing-animation"></span>
+            </h1>
+            <p class="mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-4" style="color: var(--card-subtext-color);">I build beautiful and functional web experiences. Welcome to my digital playground.</p>
+            <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center mt-8 px-4">
+                <a href="#projects" class="bg-purple-600 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition-transform transform hover:scale-105 w-full sm:w-auto">View My Work</a>
+                <a href="#contact" class="border-2 border-purple-600 text-purple-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-purple-600 hover:text-white transition-all w-full sm:w-auto">Contact Me</a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- About Section -->
+    <section id="about" class="py-12 sm:py-16 md:py-20 scroll-animate">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16" style="color: var(--text-color);">About Me</h2>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
+                <!-- Left Column: Text -->
+                <div class="glass-effect rounded-2xl p-6 sm:p-8 h-full flex flex-col items-center text-center">
+                    <!-- Corrected image source -->
+                    <img src="https://i.ibb.co/mCNrzJzT/MY-PIC.jpg"
+                         alt="A picture of Rushikesh S. Deshmukh"
+                         class="w-24 h-24 sm:w-32 sm:h-32 rounded-full mb-4 sm:mb-6 border-2 border-purple-400 object-cover">
+                    <p class="leading-relaxed text-sm sm:text-base" style="color: var(--card-subtext-color);">
+                        I'm a passionate developer and designer with a knack for creating engaging and user-friendly digital experiences. With a background in both front-end and back-end development, I enjoy bringing ideas to life in the browser. 
+                        <br><br>
+                        I'm always eager to learn new technologies and push the boundaries of what's possible on the web. When I'm not coding, you can find me exploring new hiking trails or experimenting with new recipes in the kitchen.
+                    </p>
+                </div>
+                <!-- Right Column: Code Box -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <div class="code-dot red"></div>
+                        <div class="code-dot yellow"></div>
+                        <div class="code-dot green"></div>
+                    </div>
+                    <pre><code class="code-content text-xs sm:text-sm">
+      <span class="token-keyword">const</span> <span class="token-variable">developer</span> <span class="token-punctuation">=</span> <span class="token-punctuation">{</span>
+        <span class="token-variable">name</span><span class="token-punctuation">:</span> <span class="token-string">'Rushikesh.S.Deshmukh'</span><span class="token-punctuation">,</span>
+        <span class="token-variable">passion</span><span class="token-punctuation">:</span> <span class="token-string">'Crafting elegant solutions'</span><span class="token-punctuation">,</span>
+        <span class="token-variable">alwaysLearning</span><span class="token-punctuation">:</span> <span class="token-boolean">true</span><span class="token-punctuation">,</span>
+        <span class="token-variable">problemSolver</span><span class="token-punctuation">:</span> <span class="token-boolean">true</span><span class="token-punctuation">,</span>
+        <span class="token-variable">hireable</span><span class="token-punctuation">:</span> <span class="token-keyword">function</span><span class="token-punctuation">()</span> <span class="token-punctuation">{</span>
+          <span class="token-keyword">return</span> <span class="token-punctuation">(</span>
+            <span class="token-variable">this</span><span class="token-punctuation">.</span><span class="token-variable">passion</span> <span class="token-punctuation">&&</span>
+            <span class="token-variable">this</span><span class="token-punctuation">.</span><span class="token-variable">alwaysLearning</span> <span class="token-punctuation">&&</span>
+            <span class="token-variable">this</span><span class="token-punctuation">.</span><span class="token-variable">problemSolver</span>
+          <span class="token-punctuation">)</span><span class="token-punctuation">;</span>
+        <span class="token-punctuation">}</span>
+      <span class="token-punctuation">}</span><span class="token-punctuation">;</span>
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-12 sm:py-16 md:py-20 bg-gray-900/30 scroll-animate">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16" style="color: var(--text-color);">Skills & Technologies</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+                <!-- Skill Item -->
+                <div class="glass-effect rounded-xl p-4 sm:p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-sm sm:text-base" style="color: var(--card-text-color);">
+                            <i class="fab fa-html5"></i> HTML & CSS
+                        </span>
+                        <span class="text-sm" style="color: var(--card-subtext-color);">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress-width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-xl p-4 sm:p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-sm sm:text-base" style="color: var(--card-text-color);">
+                            <i class="fab fa-js"></i> JavaScript
+                        </span>
+                        <span class="text-sm" style="color: var(--card-subtext-color);">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress-width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-xl p-4 sm:p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-sm sm:text-base" style="color: var(--card-text-color);">
+                            <i class="fab fa-react"></i> React
+                        </span>
+                        <span class="text-sm" style="color: var(--card-subtext-color);">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress-width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-xl p-4 sm:p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-sm sm:text-base" style="color: var(--card-text-color);">
+                            <i class="fab fa-node"></i> Node.js
+                        </span>
+                        <span class="text-sm" style="color: var(--card-subtext-color);">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress-width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-xl p-4 sm:p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-sm sm:text-base" style="color: var(--card-text-color);">
+                            <i class="fab fa-python"></i> Python
+                        </span>
+                        <span class="text-sm" style="color: var(--card-subtext-color);">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress-width: 75%"></div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-xl p-4 sm:p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-sm sm:text-base" style="color: var(--card-text-color);">
+                            <i class="fas fa-database"></i> Database
+                        </span>
+                        <span class="text-sm" style="color: var(--card-subtext-color);">82%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress-width: 82%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-12 sm:py-16 md:py-20 scroll-animate">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12" style="color: var(--text-color);">My Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Project Card 1 -->
+                <div class="glass-effect rounded-2xl overflow-hidden transform hover:scale-105 transition-transform">
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code text-6xl text-white opacity-50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--card-text-color);">E-Commerce Platform</h3>
+                        <p class="mb-4" style="color: var(--card-subtext-color);">A full-featured online shopping platform with payment integration, inventory management, and user authentication.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">MongoDB</span>
+                        </div>
+                        <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">View Project &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Project Card 2 -->
+                <div class="glass-effect rounded-2xl overflow-hidden transform hover:scale-105 transition-transform">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-mobile-alt text-6xl text-white opacity-50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--card-text-color);">Task Management App</h3>
+                        <p class="mb-4" style="color: var(--card-subtext-color);">A responsive task management application with real-time updates, drag-and-drop functionality, and team collaboration features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Vue.js</span>
+                            <span class="tech-badge">Firebase</span>
+                            <span class="tech-badge">Tailwind</span>
+                        </div>
+                        <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">View Project &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Project Card 3 -->
+                <div class="glass-effect rounded-2xl overflow-hidden transform hover:scale-105 transition-transform">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-chart-line text-6xl text-white opacity-50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--card-text-color);">Analytics Dashboard</h3>
+                        <p class="mb-4" style="color: var(--card-subtext-color);">An interactive data visualization dashboard for tracking business metrics and generating comprehensive reports.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">D3.js</span>
+                            <span class="tech-badge">Python</span>
+                        </div>
+                        <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">View Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-12 sm:py-16 md:py-20 bg-gray-900/50 scroll-animate">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style="color: var(--text-color);">Check out my Resume</h2>
+            <p class="text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto px-4" style="color: var(--card-subtext-color);">I'm always open to new opportunities. Feel free to download my resume to see my qualifications and experience in more detail.</p>
+            <!-- IMPORTANT: Replace '#' with the actual path to your resume file (e.g., '/resume.pdf') -->
+            <a href="#"
+               class="inline-block bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-purple-700 transition-transform transform hover:scale-105 text-sm sm:text-base">
+                Download Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 sm:py-16 md:py-20 scroll-animate">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12" style="color: var(--text-color);">Contact Me</h2>
+            <div class="max-w-xl mx-auto glass-effect rounded-2xl p-6 sm:p-8">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2 text-sm sm:text-base" style="color: var(--text-color);">Name</label>
+                        <input type="text" id="name" name="name" class="w-full rounded-lg py-2 px-4 focus:outline-none focus:border-purple-500 text-sm sm:text-base" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block mb-2 text-sm sm:text-base" style="color: var(--text-color);">Email</label>
+                        <input type="email" id="email" name="email" class="w-full rounded-lg py-2 px-4 focus:outline-none focus:border-purple-500 text-sm sm:text-base" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block mb-2 text-sm sm:text-base" style="color: var(--text-color);">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full rounded-lg py-2 px-4 focus:outline-none focus:border-purple-500 text-sm sm:text-base" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm sm:text-base">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-30 hidden flex items-center justify-center bg-black bg-opacity-50 p-4">
+        <div class="glass-effect rounded-2xl p-6 sm:p-8 max-w-sm w-full mx-auto text-center">
+            <h3 class="text-xl sm:text-2xl font-bold mb-4" style="color: var(--card-text-color);">Thank You!</h3>
+            <p id="success-message" class="mb-6 text-sm sm:text-base" style="color: var(--card-subtext-color);"></p>
+            <button id="close-modal" class="bg-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm sm:text-base">Close</button>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="py-6 sm:py-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p style="color: var(--card-subtext-color);" class="text-sm sm:text-base text-center md:text-left">&copy; 2025 Rushikesh.S.Deshmukh. All rights reserved.</p>
+                <div class="flex space-x-4 sm:space-x-6">
+                    <a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors text-xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:your.email@example.com" class="text-gray-400 hover:text-purple-400 transition-colors text-xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- External JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>

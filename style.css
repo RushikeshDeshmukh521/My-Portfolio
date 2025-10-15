@@ -1,0 +1,640 @@
+/* CSS Variables */
+:root {
+    --bg-color: #111827;
+    --text-color: #f3f4f6;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --card-text-color: #f3f4f6;
+    --card-subtext-color: #9ca3af;
+    --input-bg: #1f2937;
+    --input-border: #374151;
+    --header-text: #ffffff;
+    --link-color: #a78bfa;
+    --link-hover: #c4b5fd;
+}
+
+.light-mode {
+    --bg-color: #f9fafb;
+    --text-color: #111827;
+    --glass-bg: rgba(0, 0, 0, 0.05);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --card-text-color: #1f2937;
+    --card-subtext-color: #4b5563;
+    --input-bg: #e5e7eb;
+    --input-border: #d1d5db;
+    --header-text: #111827;
+    --link-color: #8b5cf6;
+    --link-hover: #6d28d9;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: none;
+    overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--link-color);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    z-index: 9999;
+}
+
+.custom-cursor.grow {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(167, 139, 250, 0.2);
+}
+
+/* Gradient Background */
+.gradient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at top left, rgba(12, 74, 110, 0.5), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(107, 33, 168, 0.5), transparent 40%);
+    animation: gradient-move 20s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-move {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(20%, 20%);
+    }
+}
+
+/* Glass Effect */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Scene Container */
+#scene-container {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    filter: drop-shadow(0 0 2rem #9333ea);
+    cursor: grab;
+}
+
+#scene-container:active {
+    cursor: grabbing;
+}
+
+/* Hero Title */
+.hero-title {
+    text-shadow: 0 0 15px rgba(167, 139, 250, 0.5), 0 0 30px rgba(167, 139, 250, 0.3);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-button svg {
+    transition: transform 0.3s ease-in-out;
+}
+
+.light-mode .theme-toggle-button .moon-icon {
+    transform: scale(0);
+}
+
+.light-mode .theme-toggle-button .sun-icon {
+    transform: scale(1);
+}
+
+.theme-toggle-button .sun-icon {
+     transform: scale(0);
+}
+
+/* Success Modal */
+#success-modal.hidden {
+    display: none;
+}
+
+/* Scroll Animations */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Code Box Styles */
+.code-box {
+    background-color: #282c34;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    font-family: 'Fira Code', monospace;
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #4a5568;
+    margin-bottom: 1rem;
+}
+
+.code-dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.code-dot.red { background-color: #fc5c65; }
+.code-dot.yellow { background-color: #fdbb2d; }
+.code-dot.green { background-color: #26de81; }
+
+.code-content .token-keyword { color: #c678dd; }
+.code-content .token-variable { color: #61afef; }
+.code-content .token-string { color: #98c379; }
+.code-content .token-boolean { color: #d19a66; }
+.code-content .token-function { color: #e5c07b; }
+.code-content .token-comment { color: #5c6370; font-style: italic; }
+.code-content .token-punctuation { color: #abb2bf; }
+
+/* Mobile Menu */
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.mobile-menu.active {
+    max-height: 500px;
+}
+
+/* Skills Progress Bar */
+.skill-bar {
+    height: 8px;
+    background: var(--input-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #8b5cf6, #c084fc);
+    border-radius: 4px;
+    transition: width 1s ease-out;
+    width: 0;
+}
+
+.skill-progress.animate {
+    width: var(--progress-width);
+}
+
+/* Timeline */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #8b5cf6, transparent);
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    background: #8b5cf6;
+    border-radius: 50%;
+    position: absolute;
+    left: -5px;
+    top: 8px;
+    box-shadow: 0 0 0 4px var(--bg-color), 0 0 0 6px #8b5cf6;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #8b5cf6, #c084fc);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.loading-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--glass-border);
+    border-top-color: #8b5cf6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Tech Badge */
+.tech-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #c084fc;
+    margin: 4px;
+}
+
+/* Particle Canvas */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Typing Animation */
+.typing-animation::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Project Image */
+.project-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.3">💻</text></svg>') center/50% no-repeat;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    #scene-container {
+        height: 300px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Better spacing on tablets */
+    section {
+        padding: 3rem 0;
+    }
+    
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    
+    /* Adjust grid layouts */
+    .grid {
+        gap: 1.5rem;
+    }
+    
+    /* Adjust code box */
+    .code-box {
+        font-size: 0.75rem;
+    }
+    
+    /* Make buttons full width on mobile */
+    .flex.flex-wrap.gap-4 a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+    
+    #scene-container {
+        height: 250px;
+    }
+    
+    /* Reduce padding on mobile */
+    section {
+        padding: 2rem 0;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Adjust font sizes */
+    h2 {
+        font-size: 1.875rem !important;
+    }
+    
+    h3 {
+        font-size: 1.25rem !important;
+    }
+    
+    p {
+        font-size: 0.95rem;
+    }
+    
+    /* Better spacing for cards */
+    .glass-effect {
+        padding: 1rem;
+    }
+    
+    /* Stack timeline better */
+    .timeline-item {
+        padding-left: 1.5rem !important;
+    }
+    
+    /* Adjust buttons */
+    a.bg-purple-600,
+    a.border-2 {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Project images */
+    .project-image {
+        height: 150px;
+    }
+    
+    /* Scroll to top button */
+    .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    /* Code box adjustments */
+    .code-box {
+        padding: 0.75rem;
+        font-size: 0.7rem;
+    }
+    
+    .code-header {
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Tech badges */
+    .tech-badge {
+        padding: 3px 8px;
+        font-size: 0.65rem;
+    }
+    
+    /* Modal adjustments */
+    #success-modal .glass-effect {
+        margin: 1rem;
+        max-width: calc(100% - 2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small devices */
+    .hero-title {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Navigation adjustments */
+    nav {
+        padding: 0.5rem 1rem !important;
+    }
+    
+    nav a.text-xl {
+        font-size: 1rem !important;
+    }
+    
+    /* Hero buttons */
+    .flex.flex-wrap.gap-4 {
+        gap: 0.75rem !important;
+    }
+    
+    /* Form inputs */
+    input, textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+    
+    /* Reduce scene container further */
+    #scene-container {
+        height: 200px;
+    }
+    
+    /* Footer text */
+    footer p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Landscape mode on mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    main.h-screen {
+        height: auto;
+        min-height: 100vh;
+        padding: 6rem 0 2rem;
+    }
+    
+    #scene-container {
+        height: 200px;
+        position: relative;
+        transform: none;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1400px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .custom-cursor,
+    .gradient-bg,
+    #particles-canvas,
+    .scroll-top,
+    .hamburger,
+    #theme-toggle {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
